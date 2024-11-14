@@ -41,7 +41,6 @@ def upload_file(host, port, filename):
 def download_file(host, port, filename):
     request = f"GET /{filename} HTTP/1.1\r\nHost: {host}\r\n\r\n"
     response = send_request(host, port, request)
-    # Assuming the response contains the file content after the headers
     file_content = response.split('\r\n\r\n', 1)[1]
     with open(filename, 'wb') as file:
         file.write(file_content.encode())
